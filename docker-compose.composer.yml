@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/php73/Dockerfile.dev
-    command: composer install --no-interaction -v -d /var/www/html
+    command: composer install --no-interaction -v -d /app
     tty: true
     volumes:
       - "./:/app/"
@@ -17,7 +17,7 @@ services:
       dockerfile: ./docker/php73/Dockerfile.dev
     environment:
       COMPOSER_VENDOR_DIR: vendor-dev
-    command: composer install --no-interaction -v -d /var/www/html
+    command: composer install --no-interaction -v -d /app
     tty: true
     volumes:
       - "./:/app/"
