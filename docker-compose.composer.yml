@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  php73-composer:
+    build:
+      context: .
+      dockerfile: ./docker/php73/Dockerfile.dev
+    command: composer install --no-interaction -v -d /var/www/html
+    tty: true
+    volumes:
+      - "./:/app/"
+      - "./log/php73/:/var/log/"
+      - "~/.ssh:/root/.ssh/"
+      - "./docker/php73/etc/php/php.ini:/usr/local/etc/php/php.ini"
+  php73-composer-dev:
+    build:
+      context: .
+      dockerfile: ./docker/php73/Dockerfile.dev
+    environment:
+      COMPOSER_VENDOR_DIR: vendor-dev
+    command: composer install --no-interaction -v -d /var/www/html
+    tty: true
+    volumes:
+      - "./:/app/"
+      - "./log/php73/:/var/log/"
+      - "~/.ssh:/root/.ssh/"
+      - "./docker/php73/etc/php/php.ini:/usr/local/etc/php/php.ini"

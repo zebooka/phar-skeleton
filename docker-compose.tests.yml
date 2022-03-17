@@ -1,0 +1,44 @@
+version: "3.9"
+services:
+  php73-tests:
+    build:
+      context: .
+      dockerfile: ./docker/php73/Dockerfile.dev
+    command: /app/tests/run.sh
+    tty: true
+    volumes:
+      - "./:/app/"
+      - "./log/php73/:/var/log/"
+  php74-tests:
+    build:
+      context: .
+      dockerfile: ./docker/php74/Dockerfile.dev
+    command: /app/tests/run.sh
+    tty: true
+    volumes:
+      - "./:/app/"
+      - "./log/php74/:/var/log/"
+    depends_on:
+      - php73-tests
+  php80-tests:
+    build:
+      context: .
+      dockerfile: ./docker/php80/Dockerfile.dev
+    command: /app/tests/run.sh
+    tty: true
+    volumes:
+      - "./:/app/"
+      - "./log/php80/:/var/log/"
+    depends_on:
+      - php74-tests
+  php81-tests:
+    build:
+      context: .
+      dockerfile: ./docker/php81/Dockerfile.dev
+    command: /app/tests/run.sh
+    tty: true
+    volumes:
+      - "./:/app/"
+      - "./log/php81/:/var/log/"
+    depends_on:
+      - php80-tests

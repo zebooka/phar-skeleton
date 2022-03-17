@@ -1,0 +1,4 @@
+FROM php:7.3-fpm-alpine
+COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
+RUN apk add git
+WORKDIR /app
