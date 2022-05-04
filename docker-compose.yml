@@ -3,7 +3,7 @@ services:
   php73:
     build:
       context: .
-      dockerfile: ./docker/php73/Dockerfile.dev
+      dockerfile: docker/php73/Dockerfile
     volumes:
       - "./:/app/"
       - "./log/php73/:/var/log/"
@@ -12,7 +12,7 @@ services:
   php74:
     build:
       context: .
-      dockerfile: ./docker/php74/Dockerfile.dev
+      dockerfile: docker/php74/Dockerfile
     volumes:
       - "./:/app/"
       - "./log/php74/:/var/log/"
@@ -21,7 +21,7 @@ services:
   php80:
     build:
       context: .
-      dockerfile: ./docker/php80/Dockerfile.dev
+      dockerfile: docker/php80/Dockerfile
     volumes:
       - "./:/app/"
       - "./log/php80/:/var/log/"
@@ -30,7 +30,7 @@ services:
   php81:
     build:
       context: .
-      dockerfile: ./docker/php81/Dockerfile.dev
+      dockerfile: docker/php81/Dockerfile
     volumes:
       - "./:/app/"
       - "./log/php81/:/var/log/"
