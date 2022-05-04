@@ -1,11 +1,22 @@
+.PHONY: all composer tests build start clean
 
-all: test install
+all: composer tests build
 
 composer:
-	docker-compose -f docker-compose.composer.yml up
+	docker-compose run --rm -e COMPOSER_NO_DEV=1 -- php73 composer install -v -n -d /app
+	docker-compose run --rm -e COMPOSER_VENDOR_DIR=vendor-dev -- php73 composer install -v -n -d /app
 
-test: composer
-	docker-compose -f docker-compose.tests.yml up
+tests:
+	docker-compose run --rm -- php73 /app/tests/run.sh
+	docker-compose run --rm -- php74 /app/tests/run.sh
+	docker-compose run --rm -- php80 /app/tests/run.sh
+	docker-compose run --rm -- php81 /app/tests/run.sh
 
-install: composer
-	docker-compose -f docker-compose.build.yml up
+build:
+	docker-compose run --rm -e PHAR_SKELETON_ALIAS="phar-skeleton.phar" -e PHAR_SKELETON_NAMESPACE="Zebooka" -- php73 /app/build-phar.php
+
+start:
+	docker-compose up
+
+clean:
+	docker-compose down --rmi local
