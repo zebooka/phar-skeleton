@@ -28,4 +28,4 @@ setlocale(LC_ALL, $locale);
 define('RES_DIR', __DIR__ . '/../res');
 
 fwrite(STDERR, "It works! Now implement your phar application.\n");
-exit(1);
+exit(0);

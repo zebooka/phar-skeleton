@@ -1,3 +1,3 @@
 <?php
 
-require_once '../vendor-dev/autoload.php';
+require_once '../vendor/autoload.php';

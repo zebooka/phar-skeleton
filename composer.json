@@ -4,7 +4,11 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "Zebooka\\": "src/",
+            "Zebooka\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "Test\\Zebooka\\": "tests/unit/"
         }
     },
